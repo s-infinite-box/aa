@@ -1,0 +1,222 @@
+*.settings
+*.classpath
+*.project
+*.prefs
+*.svn
+*.vagrant
+.vpy
+
+### log ###
+*.log
+
+### java ###
+*.mvn
+target
+*.out
+out
+*/out/*
+*.class
+
+### vm image ###
+/linux/build-image-real/exports/*
+/linux/build-image-real/metal/
+*iso_exports*
+
+### syncthing ###
+*~syncthing~*.tmp
+*.sync-conflict-*
+
+### rust ###
+Cargo.lock
+
+### credentials ###
+.git-credentials
+/util/_SSH_TSL/TLS_SSL/cfssl_tmp/certs/*
+/_pphome/data/*.kdbx.bak-*
+
+### temporary files ###
+.songwz/
+
+### python ###
+.venv
+
+### db2excel 导出文件（含数据库数据，不应提交） ###
+*_schema.xlsx
+
+######################
+# Project Specific
+######################
+dist
+dist-ssr
+*.local
+.nitro/
+.output/
+
+######################
+# Node
+######################
+/node/
+node_tmp/
+node_modules/
+npm-debug.log.*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+/.awcache/*
+/.cache-loader/*
+**/node-compile-cache/
+######################
+# Lock
+######################
+*-lock.*
+
+######################
+# SASS
+######################
+.sass-cache/
+
+######################
+# Eclipse
+######################
+*.pydevproject
+.project
+.metadata
+# tmp/
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.factorypath
+
+# External tool builders
+.externalToolBuilders/**
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# STS-specific
+/.sts4-cache/*
+
+######################
+# IntelliJ
+######################
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+out/
+
+######################
+# Visual Studio Code
+######################
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+######################
+# Maven
+######################
+/log/
+/target/
+
+######################
+# Gradle
+######################
+.gradle/
+/build/
+
+######################
+# Package Files
+######################
+*.jar
+*.war
+*.ear
+#*.db
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+.svn
+
+# Thumbnails
+#._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# Directories
+######################
+/bin/
+
+######################
+# Logs
+######################
+logs
+*.log*
+
+######################
+# Others
+######################
+*.*~
+*~
+.merge_file*
+
+######################
+# Gradle Wrapper
+######################
+!gradle/wrapper/gradle-wrapper.jar
+
+######################
+# Maven Wrapper
+######################
+!.mvn/wrapper/maven-wrapper.jar
+
+######################
+# ESLint
+######################
+.eslintcache
+
+######################
+# Code coverage
+######################
+coverage
+/.nyc_output/
+
+**/.~*
+
+/.claude/tmp/
+/.kiro/tmp/
+/.tmp
+
+/.zed/
+/virtual/cloud-init/build_iso/*.iso

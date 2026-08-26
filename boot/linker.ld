@@ -130,19 +130,27 @@ SECTIONS
      */
     /DISCARD/ :
     {
-        /*
-         * 删除栈展开和异常展开元数据。
-         *
-         * aa 当前使用 panic = "abort"，不执行 unwinding，
-         * 因而暂时不需要 .eh_frame。
-         */
-        *(.eh_frame)
-        *(.eh_frame.*)
+     /*
+      * 删除所有以 `.eh_frame` 开头的栈展开相关 section。
+      *
+      * 这里使用 `.eh_frame*`，可以同时匹配：
+      *
+      *   .eh_frame
+      *   .eh_frame.foo
+      *   .eh_frame_hdr
+      *
+      * 原来的 `.eh_frame.*` 只能匹配 frame 后面紧跟点号的名称，
+      * 因而无法匹配使用下划线的 `.eh_frame_hdr`。
+      *
+      * aa 当前使用 panic = "abort"，不需要运行时栈展开。
+      * `.debug_frame` 不以 `.eh_frame` 开头，不会被删除，
+      * 因此 GDB 调试信息仍然保留。
+      */
+     *(.eh_frame*)
 
-        /*
-         * 删除编译器版本等说明信息。
-         * 这些信息不参与内核运行。
-         */
-        *(.comment)
+     /*
+      * 删除编译器版本等不参与运行的说明信息。
+      */
+     *(.comment)
     }
 }

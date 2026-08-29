@@ -27,7 +27,7 @@ out
 *.sync-conflict-*
 
 ### rust ###
-Cargo.lock
+#Cargo.lock
 
 ### credentials ###
 .git-credentials

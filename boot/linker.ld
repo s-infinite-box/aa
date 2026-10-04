@@ -121,6 +121,38 @@ SECTIONS
          * Rust 通常不会依赖它，但保留后兼容性更完整。
          */
         *(COMMON)
+
+        /*
+         * 为 GRUB 交付的两个 32 位入口参数预留空间。
+         *
+         * multiboot_magic 保存 EAX 中的 Multiboot2 启动魔数；
+         * multiboot_info 保存 EBX 中的信息结构物理地址。
+         *
+         * 此处只分配地址，真正的值由 _start 在使用栈之前写入。
+         */
+        . = ALIGN(4);
+
+        multiboot_magic = .;
+        . += 4;
+
+        multiboot_info = .;
+        . += 4;
+
+        /*
+         * 为 32 位启动阶段预留 16 KiB 临时栈。
+         *
+         * 栈的起点按 4 KiB 页边界对齐，便于后续建立页表和设置
+         * 页面权限。x86 栈向低地址增长，所以 _start 会把 ESP
+         * 初始化为 boot_stack_top，而不是 boot_stack_bottom。
+         *
+         * 这里使用 NOLOAD 的 .bss，只增加 ELF 装载段的 MemSiz，
+         * 不会在内核文件中存储 16 KiB 的零字节。
+         */
+        . = ALIGN(0x1000);
+
+        boot_stack_bottom = .;
+        . += 0x4000;
+        boot_stack_top = .;
     }
 
     /*

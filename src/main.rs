@@ -1,8 +1,9 @@
 //! aa 的最小 Rust 内核入口。
 //!
 //! 当前启动链仍停留在 boot/entry.S 的 32 位 _start：GRUB 可以识别并
-//! 进入 aa，但汇编入口还没有建立栈、页表和 64 位执行环境，也没有调用
-//! kernel_main。本文件先定义 Rust 侧接口，供后续 long mode 切换完成后接入。
+//! 进入 aa，汇编入口已经保存 Multiboot2 参数并建立启动栈，但还没有建立
+//! 页表和 64 位执行环境，也没有调用 kernel_main。本文件先定义 Rust 侧
+//! 接口，供后续 long mode 切换完成后接入。
 //!
 //! 因为 kernel_main 当前没有调用者，链接器启用 section garbage collection
 //! 时可能把它移除；现阶段在反汇编中看不到 kernel_main 属于预期结果。
